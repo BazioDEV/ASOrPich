@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
+import os
 from decouple import config, Csv
 from pathlib import Path
 
@@ -38,6 +39,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'social',
     'landing',
+    'crispy_forms',
+    'crispy_bootstrap5',
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -132,3 +135,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = os.path.join(BASE_DIR / 'static'),
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
+
+LOGIN_REDIRECT_URL = 'index'
+
+ACCOUNT_EMAIL_REQUIRED = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
